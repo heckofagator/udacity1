@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 variable "prefix" {
-  description = "The prefix which should be used for all resources in this example"
+  description = "The name prefix which should be used for all resources in this example"
   default     = "udacity-project"
 }
 
@@ -62,4 +62,9 @@ variable "mandisk_caching" {
 variable "create_option" {
   description = "the create_option value for the managed disk"
   default     = "Empty"
+}
+
+variable "subscription_id" {
+  description = "Azure subscription id where the resources will be built"
+  default     = "b6a27b6d-3141-46ad-871e-7a588457c248"
 }
