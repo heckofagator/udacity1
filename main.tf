@@ -138,7 +138,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   availability_set_id             = azurerm_availability_set.as.id
 
 tags = {
-    "${var.tag_name}" = "${var.tag_value}"
+    "${var.tag_name}" = "${var.tag_value}",
+    "Project"         = "udacity_project_1"
   }
 
   source_image_id = "/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/AZUREDEVOPS/providers/Microsoft.Compute/images/myUdacityPackerImage"
