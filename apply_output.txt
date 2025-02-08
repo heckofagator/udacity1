@@ -1,0 +1,56 @@
+[0m[1mazurerm_resource_group.rg: Creating...[0m[0m
+[0m[1mazurerm_resource_group.rg: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_resource_group.rg: Creation complete after 10s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg][0m
+[0m[1mazurerm_availability_set.as: Creating...[0m[0m
+[0m[1mazurerm_virtual_network.vnet: Creating...[0m[0m
+[0m[1mazurerm_managed_disk.mandisk[0]: Creating...[0m[0m
+[0m[1mazurerm_managed_disk.mandisk[1]: Creating...[0m[0m
+[0m[1mazurerm_availability_set.as: Creation complete after 2s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/availabilitySets/udacity-project-as][0m
+[0m[1mazurerm_managed_disk.mandisk[1]: Creation complete after 4s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/disks/udacity-project-data-disk-1][0m
+[0m[1mazurerm_managed_disk.mandisk[0]: Creation complete after 4s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/disks/udacity-project-data-disk-0][0m
+[0m[1mazurerm_virtual_network.vnet: Creation complete after 5s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/virtualNetworks/udacity-project-vnet][0m
+[0m[1mazurerm_subnet.snet: Creating...[0m[0m
+[0m[1mazurerm_public_ip.pubip: Creating...[0m[0m
+[0m[1mazurerm_network_security_group.nsg: Creating...[0m[0m
+[0m[1mazurerm_network_security_group.nsg: Creation complete after 3s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/networkSecurityGroups/udacity-project-nsg][0m
+[0m[1mazurerm_public_ip.pubip: Creation complete after 3s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/publicIPAddresses/udacity-project-pubip][0m
+[0m[1mazurerm_lb.lb: Creating...[0m[0m
+[0m[1mazurerm_subnet.snet: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_subnet.snet: Creation complete after 11s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/virtualNetworks/udacity-project-vnet/subnets/udacity-project-snet][0m
+[0m[1mazurerm_subnet_network_security_group_association.internal: Creating...[0m[0m
+[0m[1mazurerm_network_interface.nic[1]: Creating...[0m[0m
+[0m[1mazurerm_network_interface.nic[0]: Creating...[0m[0m
+[0m[1mazurerm_lb.lb: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_lb.lb: Creation complete after 12s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/loadBalancers/udacity-project-lb][0m
+[0m[1mazurerm_lb_backend_address_pool.be_pool: Creating...[0m[0m
+[0m[1mazurerm_subnet_network_security_group_association.internal: Creation complete after 5s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/virtualNetworks/udacity-project-vnet/subnets/udacity-project-snet][0m
+[0m[1mazurerm_lb_backend_address_pool.be_pool: Creation complete after 3s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/loadBalancers/udacity-project-lb/backendAddressPools/be_pool][0m
+[0m[1mazurerm_network_interface.nic[1]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_network_interface.nic[0]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_network_interface.nic[0]: Creation complete after 19s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/networkInterfaces/udacity-project-nic-0][0m
+[0m[1mazurerm_network_interface.nic[1]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_network_interface.nic[1]: Creation complete after 30s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/networkInterfaces/udacity-project-nic-1][0m
+[0m[1mazurerm_network_interface_backend_address_pool_association.be_pool_assoc[1]: Creating...[0m[0m
+[0m[1mazurerm_network_interface_backend_address_pool_association.be_pool_assoc[0]: Creating...[0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[0]: Creating...[0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[1]: Creating...[0m[0m
+[0m[1mazurerm_network_interface_backend_address_pool_association.be_pool_assoc[0]: Creation complete after 3s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/networkInterfaces/udacity-project-nic-0/ipConfigurations/ipconfig|/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/loadBalancers/udacity-project-lb/backendAddressPools/be_pool][0m
+[0m[1mazurerm_network_interface_backend_address_pool_association.be_pool_assoc[1]: Creation complete after 3s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/networkInterfaces/udacity-project-nic-1/ipConfigurations/ipconfig|/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Network/loadBalancers/udacity-project-lb/backendAddressPools/be_pool][0m
+[0m[1mazurerm_linux_virtual_machine.vm[1]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[0]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[1]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[0]: Still creating... [20s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[1]: Still creating... [30s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[0]: Still creating... [30s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[1]: Still creating... [40s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[0]: Still creating... [40s elapsed][0m[0m
+[0m[1mazurerm_linux_virtual_machine.vm[0]: Creation complete after 48s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/virtualMachines/udacity-project-vm-0][0m
+[0m[1mazurerm_linux_virtual_machine.vm[1]: Creation complete after 49s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/virtualMachines/udacity-project-vm-1][0m
+[0m[1mazurerm_virtual_machine_data_disk_attachment.attach_disk[1]: Creating...[0m[0m
+[0m[1mazurerm_virtual_machine_data_disk_attachment.attach_disk[0]: Creating...[0m[0m
+[0m[1mazurerm_virtual_machine_data_disk_attachment.attach_disk[1]: Creation complete after 8s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/virtualMachines/udacity-project-vm-1/dataDisks/udacity-project-data-disk-1][0m
+[0m[1mazurerm_virtual_machine_data_disk_attachment.attach_disk[0]: Still creating... [10s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine_data_disk_attachment.attach_disk[0]: Creation complete after 11s [id=/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/udacity-project-rg/providers/Microsoft.Compute/virtualMachines/udacity-project-vm-0/dataDisks/udacity-project-data-disk-0][0m
+[0m[1m[32m
+Apply complete! Resources: 19 added, 0 changed, 0 destroyed.
+[0m

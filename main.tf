@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = "${var.prefix}-vnet"
   address_space       = ["10.0.0.0/24"]
   location            = var.location
-  resource_group_name = "${var.prefix}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   tags = {
     "${var.tag_name}" = "${var.tag_value}"
   }
@@ -27,7 +27,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 resource "azurerm_subnet" "snet" {
   name                 = "${var.prefix}-snet"
-  resource_group_name  = "${var.prefix}-rg"
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = "${var.prefix}-vnet"
   address_prefixes     = ["10.0.0.0/24"]
 #  tags = {
@@ -39,7 +39,7 @@ resource "azurerm_subnet" "snet" {
 resource "azurerm_network_security_group" "nsg" {
   name                = "${var.prefix}-nsg"
   location            = var.location
-  resource_group_name = "${var.prefix}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   tags = {
     "${var.tag_name}" = "${var.tag_value}"
   }
@@ -58,7 +58,7 @@ resource "azurerm_network_security_group" "nsg" {
   }
 
   security_rule {
-    name           = "allow-VMs-to-communicate"
+    name           = "allow-VMs-to-communicate-Inbound"
     priority       = 200
     direction      = "Inbound"
     access         = "Allow"
@@ -67,6 +67,30 @@ resource "azurerm_network_security_group" "nsg" {
     destination_port_range = "*"
     source_address_prefix = "VirtualNetwork" 
     destination_address_prefix = "VirtualNetwork" 
+  }
+
+  security_rule {
+    name           = "allow-VMs-to-communicate-Outbound"
+    priority       = 300
+    direction      = "Outbound"
+    access         = "Allow"
+    protocol       = "*"  
+    source_port_range = "*" 
+    destination_port_range = "*"
+    source_address_prefix = "VirtualNetwork" 
+    destination_address_prefix = "VirtualNetwork" 
+  }
+
+  security_rule {
+    name           = "allow-web-traffic"
+    priority       = 400
+    direction      = "Inbound"
+    access         = "Allow"
+    protocol       = "Tcp"  
+    source_port_range = "*" 
+    destination_port_range = "80"
+    source_address_prefix = "VirtualNetwork" 
+    destination_address_prefix = "AzureLoadBalancer" 
   }
 }
 
@@ -77,7 +101,7 @@ resource "azurerm_subnet_network_security_group_association" "internal" {
 
 resource "azurerm_lb" "lb" {
   name                = "${var.prefix}-lb"
-  resource_group_name = "${var.prefix}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   frontend_ip_configuration {
     name                 = "${var.prefix}-lb-pubip"
@@ -88,14 +112,14 @@ resource "azurerm_lb" "lb" {
 resource "azurerm_availability_set" "as" {
   name                = "${var.prefix}-as"
   location            = var.location
-  resource_group_name = "${var.prefix}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   depends_on          = [azurerm_resource_group.rg]
 }
 
 resource "azurerm_network_interface" "nic" {
   count               = var.vm_count
   name                = "${var.prefix}-nic-${count.index}"
-  resource_group_name = "${var.prefix}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
 
   tags = {
@@ -113,7 +137,7 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_public_ip" "pubip" {
   name                = "${var.prefix}-pubip"
-  resource_group_name = "${var.prefix}-rg"
+  resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   allocation_method   = "Static"
 
@@ -126,7 +150,7 @@ resource "azurerm_public_ip" "pubip" {
 resource "azurerm_linux_virtual_machine" "vm" {
   count                           = var.vm_count
   name                            = "${var.prefix}-vm-${count.index}"
-  resource_group_name             = "${var.prefix}-rg"
+  resource_group_name             = azurerm_resource_group.rg.name
   location                        = var.location
   size                            = var.vm_size
   admin_username                  = var.admin_username
@@ -144,7 +168,7 @@ tags = {
 
   source_image_id = "/subscriptions/b6a27b6d-3141-46ad-871e-7a588457c248/resourceGroups/AZUREDEVOPS/providers/Microsoft.Compute/images/myUdacityPackerImage"
   
-# Either use std stanza below or can use customer Packer image above from 'az image list'
+# Either use std stanza below or can use custom Packer image above from 'az image list'
 #  source_image_reference {
 #    publisher = "Canonical"
 #    offer     = "0001-com-ubuntu-server-jammy"
@@ -162,7 +186,7 @@ resource "azurerm_managed_disk" "mandisk" {
   count                = var.vm_count
   name                 = "${var.prefix}-data-disk-${count.index}"
   location             = var.location
-  resource_group_name  = "${var.prefix}-rg"
+  resource_group_name  = azurerm_resource_group.rg.name
   storage_account_type = var.storage_account_type
   create_option        = var.create_option
   disk_size_gb         = var.man_disk_size
